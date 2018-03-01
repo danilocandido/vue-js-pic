@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Painel from './shared/painel/Painel.vue';
+import Painel from '../shared/painel/Painel.vue';
 
 export default {
 
