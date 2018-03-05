@@ -7,8 +7,9 @@
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
         <meu-painel :titulo="foto.titulo">
-          <img class="image-responsiva" :src="foto.url" :alt="foto.titulo">
-        </meu-painel>
+          <img class="image-responsiva" :src="foto.url" :alt="foto.titulo"/>
+          <meu-botao type="button" rotulo="REMOVER" @click.native="remove(foto)"></meu-botao>
+        </meu-painel>)
       </li>
     </ul>
   </div>
@@ -16,11 +17,13 @@
 
 <script>
 import Painel from '../shared/painel/Painel.vue';
+import Botao from '../shared/botao/Botao.vue';
 
 export default {
 
   components: {
-    'meu-painel': Painel
+    'meu-painel': Painel,
+    'meu-botao': Botao
   },
 
   data() {
@@ -38,6 +41,14 @@ export default {
         return this.fotos.filter(foto => exp.test(foto.titulo))
       }else{
         return this.fotos;
+      }
+    }
+  },
+
+  methods:{
+    remove(foto){
+      if(confirm('Confirma?')) {
+        alert(foto.titulo);
       }
     }
   },
